@@ -2,8 +2,14 @@
 
 ---
 
-<div>
-    <div class=" mt-5 w-8 hover:w-24 rounded-2xl transition-all duration-300 border-blue-400 border-solid border text-white p-4">
-
+<div class="group">
+    <div class="mt-5 w-8 hover:w-24 rounded-2xl transition-all duration-300 border-blue-400 border-solid border text-white p-4 group-hover:transition-delay">
     </div>
-</div>
+  </div>
+  
+  <style is:global>
+    .group-hover\:transition-delay {
+      transition-delay: 250ms;
+    }
+  </style>
+  
