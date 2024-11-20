@@ -5,7 +5,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'0xProtoNerdFont': ['0xProtoNerdFont', ...defaultTheme.fontFamily.sans],
+				'zerox': ['ZeroxProtoNerdFont', ...defaultTheme.fontFamily.sans],
+				// 'zeroxmono': ['ZeroxProtoNerdFontMono', ...defaultTheme.fontFamily.mono],
+				// 'zeroxpropo': ['ZeroxProtoNerdFontPropo', ...defaultTheme.fontFamily.serif],
 			}
 		},
 	},
