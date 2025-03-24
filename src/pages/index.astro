@@ -1,10 +1,15 @@
 ---
-import Layout from './Layout.astro'
+import Layout from "./Layout.astro";
+import LanguageBubbles from "../components/LanguageBubbles";
 ---
-<Layout title="Gene Ni | 25' UMCP">
-	<div class=" flex gap-3 flex-col items-center">
-		<h2 class=" text-2xl">Hi my name is Gene</h2>
-		<p>Welcome to my portfolio!</p>
-	</div>
-</Layout>
 
+<Layout title="Gene Ni | 25' UMCP">
+  <div class="relative w-full h-full flex flex-col items-center justify-center gap-3 text-white">
+    <!-- Background bubbles -->
+    <LanguageBubbles client:load />
+
+    <!-- Foreground content -->
+    <h2 class="text-2xl z-10">Hi I'm Gene</h2>
+    <p class="z-10">Welcome to my portfolio!</p>
+  </div>
+</Layout>

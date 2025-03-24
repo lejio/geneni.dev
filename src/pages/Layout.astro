@@ -1,35 +1,41 @@
 ---
-import Header from './Header.astro';
-import Footer from './Footer.astro';
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
 const { title } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-	</head>
-	<body>
-        <main class=" font-zerox w-full h-[100vh] flex flex-col justify-between align-middle items-center">
-            <Header />
-            <slot />
-            <Footer />
-        </main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main
+      class="font-zerox w-full h-[100vh] flex flex-col p-5 gap-4 justify-between align-middle items-center"
+    >
+      <div
+        class="w-full h-full rounded-xl bg-black flex flex-col align-middle items-center"
+      >
+        <!-- <Header /> -->
+        <slot />
+      </div>
+      <Footer />
+    </main>
+  </body>
 </html>
 
 <style is:global>
-	@font-face {
-		font-family: 'ZeroxProtoNerdFont';
-		src: url('/fonts/ZeroxProtoNerdFont-Regular.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-	}
+  @font-face {
+    font-family: "ZeroxProtoNerdFont";
+    src: url("/fonts/ZeroxProtoNerdFont-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
 
-	/* @font-face {
+  /* @font-face {
 		font-family: 'ZeroxProtoNerdFontMono';
 		src: url('/fonts/ZeroxProtoNerdFontMono-Regular.ttf') format('truetype');
 		font-weight: normal;

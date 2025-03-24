@@ -1,0 +1,14 @@
+---
+import { fetchTopLanguages } from '../lib/github';
+
+const langs = await fetchTopLanguages();
+const sorted = Object.entries(langs).sort((a, b) => b[1] - a[1]);
+
+console.log(langs)
+---
+
+<ul>
+  {sorted.map(([lang, bytes]) => (
+    <li><strong>{lang}</strong>: {bytes.toLocaleString()} bytes</li>
+  ))}
+</ul>
