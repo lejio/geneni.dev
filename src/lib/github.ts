@@ -1,4 +1,4 @@
-export async function fetchTopLanguages(): Promise<Record<string, number>> {
+export async function fetchTopLanguages(): Promise<{ name: string, value: number }[]> {
 	const GITHUB_API = 'https://api.github.com/graphql';
 	const TOKEN = import.meta.env.GITHUB_TOKEN;
 
@@ -9,27 +9,27 @@ export async function fetchTopLanguages(): Promise<Record<string, number>> {
 
 	while (hasNextPage) {
 		const query = `
-      query ($after: String) {
-        viewer {
-          repositories(first: 100, after: $after, ownerAffiliations: OWNER, isFork: false) {
-            pageInfo {
-              hasNextPage
-              endCursor
-            }
-            nodes {
-              languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
-                edges {
-                  size
-                  node {
-                    name
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
+	  query ($after: String) {
+		viewer {
+		  repositories(first: 100, after: $after, ownerAffiliations: OWNER, isFork: false) {
+			pageInfo {
+			  hasNextPage
+			  endCursor
+			}
+			nodes {
+			  languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+				edges {
+				  size
+				  node {
+					name
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	`;
 
 		const res = await fetch(GITHUB_API, {
 			method: 'POST',
@@ -57,9 +57,9 @@ export async function fetchTopLanguages(): Promise<Record<string, number>> {
 		}
 	}
 
-	const sortedLangs = Object.fromEntries(
-		Object.entries(langs).sort((a, b) => b[1] - a[1])
-	);
+	const sortedLangs = Object.entries(langs)
+		.sort((a, b) => b[1] - a[1])
+		.map(([name, value]) => ({ name, value }));
 
 	return sortedLangs;
 }
