@@ -1,0 +1,6 @@
+---
+import NavItems from "./NavItems";
+const currentPath = Astro.url.pathname;
+---
+
+<NavItems client:load size={30} currentPath={currentPath}/>

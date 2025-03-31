@@ -1,6 +1,6 @@
 ---
-import Header from "./Header.astro";
-import Footer from "./Footer.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
 ---
 
@@ -14,7 +14,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <main
-      class="font-zerox w-full h-[100vh] flex flex-col p-5 gap-4 justify-between align-middle items-center"
+      class="font-zerox w-full h-[100vh] flex flex-col px-5 gap-4 justify-between align-middle items-center"
     >
       <Header />
       <slot />

@@ -61,7 +61,7 @@ export default function BubbleCanvas({ languages }) {
       .forceSimulation(activeNodes)
       .force("slow", d3.forceManyBody().strength(0))
       .force("collision", d3.forceCollide().radius((d) => d.r + 2))
-      .velocityDecay(0.2)
+      .velocityDecay(0.02)
       .alphaDecay(0)
       .on("tick", () => {
         repelFromTextZone(simulation.alpha());
