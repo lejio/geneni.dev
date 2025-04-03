@@ -11,6 +11,7 @@ interface NavProps {
 interface NavItem {
     name: string;
     href: string;
+    color: string;
     icon: JSX.Element
 }
 
@@ -19,6 +20,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
     {
       name: "Home",
       href: "/",
+      color: "#087E8B",
       icon: (
         <IoMdHome
           size={size}
@@ -29,6 +31,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
     {
       name: "Projects",
       href: "/projects",
+      color: "#C81D25",
       icon: (
         <IoMdRocket
           size={size}
@@ -39,6 +42,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
     {
       name: "About",
       href: "/about",
+      color: "#FF5A5F",
       icon: (
         <IoMdPerson
           size={size}
@@ -49,6 +53,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
     {
       name: "Contact",
       href: "/contact",
+      color: "#35c38f",
       icon: (
         <IoMdMail
           size={size}
@@ -67,7 +72,10 @@ export default function NavItems({ currentPath, size }: NavProps) {
     <div className="group relative mt-5 flex justify-center items-center align-middle gap-5" onMouseLeave={() => {
         setCurrHover(currentItem)
     }}>
-      <div className="w-16 h-16 group-hover:w-64 rounded-full transition-all duration-300 border-black bg-white border-2 text-black py-2 flex justify-center align-middle items-center overflow-hidden">
+      <div className="w-16 h-16 group-hover:w-64 rounded-full transition-all duration-300 bg-white border-2 text-black py-2 flex justify-center align-middle items-center overflow-hidden"
+      style={{
+        borderColor: currHover?.color ?? "black",
+      }}>
         <a
           href={currentItem.href}
           className="flex items-center justify-center min-w-[2rem] h-8 group-hover:hidden"
