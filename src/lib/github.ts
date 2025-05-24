@@ -31,7 +31,7 @@ export async function fetchTopLanguages(): Promise<{ name: string, value: number
 	  }
 	`;
 
-		const res = await fetch(GITHUB_API, {
+		const res: Response = await fetch(GITHUB_API, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${TOKEN}`,
