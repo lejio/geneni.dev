@@ -3,6 +3,8 @@ import BubbleCanvas from "./BubbleCanvas";
 
 export default function LanguageBubbles() {
   const [languages, setLanguages] = useState([]);
+  const [resizeKey, setResizeKey] = useState(0); // <- for remount trigger
+
   useEffect(() => {
     // console.log("Starting worker");
     const worker = new Worker("/fetchWorker.js");
@@ -25,7 +27,16 @@ export default function LanguageBubbles() {
     return () => worker.terminate();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setResizeKey((prev) => prev + 1); // trigger remount
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (languages.length === 0) return <div>Loading bubbles...</div>;
 
-  return <BubbleCanvas languages={languages} />;
+  return <BubbleCanvas key={resizeKey} languages={languages} />;
 }

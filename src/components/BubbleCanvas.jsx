@@ -23,7 +23,7 @@ const languageColors = {
 };
 
 export default function BubbleCanvas({ languages }) {
-  console.log(languages)
+  console.log(languages);
   const svgRef = useRef(null);
   const simulationRef = useRef(null);
   if (!languages || languages.length === 0) return null;
@@ -32,10 +32,24 @@ export default function BubbleCanvas({ languages }) {
     const svgEl = svgRef.current;
     const { width, height } = svgEl.getBoundingClientRect();
 
+    const maxCanvasWidth = 1920;
+    const maxCanvasHeight = 1080;
+
+    const effectiveWidth = Math.min(width, maxCanvasWidth);
+    const effectiveHeight = Math.min(height, maxCanvasHeight);
+
+    const minRadius = Math.min(effectiveWidth, effectiveHeight) * 0.05; // ~3%
+    const maxRadius = Math.min(effectiveWidth, effectiveHeight) * 0.2; // ~10%
+
     const rScale = d3
       .scaleSqrt()
       .domain([0, d3.max(languages, (d) => d.value)])
-      .range([50, 150]);
+      .range([minRadius, maxRadius]);
+
+    // const rScale = d3
+    //   .scaleSqrt()
+    //   .domain([0, d3.max(languages, (d) => d.value)])
+    //   .range([50, 150]);
 
     const allNodes = languages.map((d) => {
       const r = rScale(d.value);
@@ -54,13 +68,18 @@ export default function BubbleCanvas({ languages }) {
     const svg = d3.select(svgEl).attr("width", width).attr("height", height);
     const container = svg.append("g");
 
-    const circles = container.selectAll("circle").data(activeNodes, (d) => d.name);
+    const circles = container
+      .selectAll("circle")
+      .data(activeNodes, (d) => d.name);
     const labels = container.selectAll("text").data(activeNodes, (d) => d.name);
 
     const simulation = d3
       .forceSimulation(activeNodes)
       .force("slow", d3.forceManyBody().strength(0))
-      .force("collision", d3.forceCollide().radius((d) => d.r + 2))
+      .force(
+        "collision",
+        d3.forceCollide().radius((d) => d.r + 2)
+      )
       .velocityDecay(0.02)
       .alphaDecay(0)
       .on("tick", () => {
@@ -142,7 +161,7 @@ export default function BubbleCanvas({ languages }) {
         .join("circle")
         .attr("r", node.r)
         .attr("fill", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
-        .attr("stroke", "#222")
+        .attr("stroke", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke-width", 1.5);
 
       container

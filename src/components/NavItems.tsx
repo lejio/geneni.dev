@@ -20,44 +20,44 @@ export default function NavItems({ currentPath, size }: NavProps) {
     {
       name: "Home",
       href: "/",
-      color: "#087E8B",
+      color: "#e879f9",
       icon: (
         <IoMdHome
           size={size}
-          className="transition-all duration-300 hover:text-[#087E8B]"
+          className="transition-all duration-300 hover:text-[#e879f9]"
         />
       ),
     },
     {
       name: "Projects",
       href: "/projects",
-      color: "#C81D25",
+      color: "#a872f4",
       icon: (
         <IoMdRocket
           size={size}
-          className="transition-all duration-300 hover:text-[#C81D25] rotate-45"
+          className="transition-all duration-300 hover:text-[#a872f4] rotate-45"
         />
       ),
     },
     {
       name: "About",
       href: "/about",
-      color: "#FF5A5F",
+      color: "#6b6bef",
       icon: (
         <IoMdPerson
           size={size}
-          className="transition-all duration-300 hover:text-[#FF5A5F]"
+          className="transition-all duration-300 hover:text-[#6b6bef]"
         />
       ),
     },
     {
       name: "Contact",
       href: "/contact",
-      color: "#35c38f",
+      color: "#2963ea",
       icon: (
         <IoMdMail
           size={size}
-          className="transition-all duration-300 hover:text-[#35c38f]"
+          className="transition-all duration-300 hover:text-[#2963ea]"
         />
       ),
     },
@@ -85,10 +85,10 @@ export default function NavItems({ currentPath, size }: NavProps) {
         </a>
 
         <ul className="hidden w-full group-hover:flex flex-row justify-evenly items-center align-middle">
-          {navItems.map((item) => {
+          {navItems.map((item, idx) => {
             if (item.href === currentPath) return null; // Skip current
             return (
-              <li>
+              <li key={idx}>
                 <a
                   href={item.href}
                   className="hover:underline whitespace-nowrap"
