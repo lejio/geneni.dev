@@ -3,4 +3,4 @@ import NavItems from "./NavItems";
 const currentPath = Astro.url.pathname;
 ---
 
-<NavItems client:load size={30} currentPath={currentPath}/>
+<NavItems transition:persist client:load size={30} currentPath={currentPath}/>
