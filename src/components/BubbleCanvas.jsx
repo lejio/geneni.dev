@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
+import { useStore } from "@nanostores/react";
+import { poppedLanguages, addPoppedLanguage } from "../lib/stores";
 
 const languageColors = {
   Python: "#3572A5",
@@ -25,6 +27,7 @@ const languageColors = {
 export default function BubbleCanvas({ languages }) {
   const svgRef = useRef(null);
   const simulationRef = useRef(null);
+  const popped = useStore(poppedLanguages);
   if (!languages || languages.length === 0) return null;
 
   useEffect(() => {
@@ -45,7 +48,9 @@ export default function BubbleCanvas({ languages }) {
       .domain([0, d3.max(languages, (d) => d.value)])
       .range([minRadius, maxRadius]);
 
-    const allNodes = languages.map((d) => {
+    const allNodes = languages
+    .filter((d) => !popped.includes(d.name))
+    .map((d) => {
       const r = rScale(d.value);
       return {
         ...d,
@@ -156,7 +161,38 @@ export default function BubbleCanvas({ languages }) {
         .attr("r", node.r)
         .attr("fill", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
-        .attr("stroke-width", 1.5);
+        .attr("stroke-width", 1.5)
+        .style("cursor", "pointer")
+        .on("click", function (event, d) {
+          addPoppedLanguage(d.name);
+
+          d3.select(this)
+            .transition()
+            .duration(300)
+            .attr("r", 0)
+            .style("opacity", 0)
+            .on("end", function () {
+              d3.select(this).remove();
+            });
+
+          container
+            .selectAll("text")
+            .filter((t) => t.name === d.name)
+            .transition()
+            .duration(300)
+            .style("opacity", 0)
+            .on("end", function () {
+              d3.select(this).remove();
+            });
+
+          const i = activeNodes.findIndex((n) => n.name === d.name);
+          if (i !== -1) {
+            activeNodes.splice(i, 1);
+          }
+
+          simulation.nodes(activeNodes);
+          simulation.alpha(0.5).restart();
+        });
 
       // Repel Box outline for debug
       // container
@@ -230,7 +266,7 @@ export default function BubbleCanvas({ languages }) {
   return (
     <svg
       ref={svgRef}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 hidden md:block w-full h-full"
       preserveAspectRatio="xMidYMid meet"
     />
   );

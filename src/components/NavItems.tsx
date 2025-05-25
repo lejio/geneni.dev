@@ -1,4 +1,4 @@
-import { type JSX, useRef, useState } from "react";
+import { type JSX, useEffect, useRef, useState } from "react";
 import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -15,6 +15,8 @@ interface NavItem {
 }
 
 export default function NavItems({ currentPath, size }: NavProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
   const navItems: NavItem[] = [
     {
       name: "Home",
@@ -69,29 +71,43 @@ export default function NavItems({ currentPath, size }: NavProps) {
   const [currHover, setCurrHover] = useState<NavItem | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const isExpanded = currHover !== null;
-
+  const isExpanded = isMobile || currHover !== null;
   const handleMouseEnter = () => {
+    if (isMobile) return;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setCurrHover(currentItem); // starts expanded
+    setCurrHover(currentItem);
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     timeoutRef.current = setTimeout(() => {
-      setCurrHover(null); // collapse
-    }, 500); // delay helps prevent flicker
+      setCurrHover(null);
+    }, 300);
   };
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind's `md` breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <div
-      className="relative mt-5 flex justify-center items-center gap-5"
+      className="relative flex justify-center items-center gap-5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
         layout
         initial={{ width: 64, borderColor: currentItem.color }}
-        animate={{ width: isExpanded ? 256 : 64, borderColor: (currHover ?? currentItem).color }}
+        animate={{
+          width: isExpanded ? 256 : 64,
+          borderColor: (currHover ?? currentItem).color,
+        }}
         transition={{ duration: 0.3 }}
         className="h-16 rounded-full bg-white border-2 text-black py-2 flex justify-center items-center overflow-hidden"
       >

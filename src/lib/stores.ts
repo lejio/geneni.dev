@@ -1,9 +1,15 @@
+// stores/poppedStore.ts
 import { atom } from 'nanostores';
 
-export type NavItem = {
+export interface LanguageEntry {
   name: string;
-  href: string;
-  color: string;
-};
+  value: number;
+}
 
-export const currHover = atom<NavItem | null>(null);
+export const poppedLanguages = atom<string[]>([]);
+
+export function addPoppedLanguage(name: string) {
+  poppedLanguages.set([...new Set([...poppedLanguages.get(), name])]);
+}
+
+export const githubLanguages = atom<LanguageEntry[]>([]);

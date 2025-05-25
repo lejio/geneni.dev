@@ -4,24 +4,37 @@ import LanguageBubbles from "../components/LanguageBubbles";
 import { Image } from "astro:assets";
 import msu_icon from "../images/msu_helmet.svg";
 import PixelGene from "../images/PixelGene.png";
+import LangPercentage from "../components/LangPercentage";
 ---
 
 <Layout title="Gene Ni | 25' UMCP">
-  <div
-    class="relative max-w-[1920px] max-h-[1080px] w-full h-full flex flex-col items-center justify-center gap-3 text-white bg-gradient-to-r from-fuchsia-400 to-blue-600 rounded-xl"
-  >
-    <!-- Background bubbles -->
-    <LanguageBubbles client:load />
+  <div class="max-w-[1920px] max-h-[1080px] w-full h-full flex flex-row">
 
-    <!-- Foreground content -->
-    <Image class="w-32" src={PixelGene} alt="PixelGene" />
-    <h2 class="text-2xl z-10">Gene Ni</h2>
-    <p class="z-10 text-sm">Full Stack Developer @</p>
-    <Image class="w-10" src={msu_icon} alt="MSU Icon" />
-    <p class="z-10 font-bold text-lg text-[#18453B]">
-      Michigan State University
-    </p>
+    <div class="md:hidden">
+      <LangPercentage client:load />
+    </div>
+    <div
+      class="relative max-w-[1920px] max-h-[1080px] w-full h-full flex flex-col items-center justify-center text-white bg-gradient-to-r from-fuchsia-400 to-blue-600 rounded-xl"
+    >
+      <!-- Background bubbles -->
+      <LanguageBubbles client:load />
 
-    <p class="z-10 font-bold text-lg text-[#7BBD00]">Irrigation Laboratory</p>
+      <!-- Foreground content -->
+      <div
+        class="w-full h-full flex flex-col items-center justify-center gap-3"
+      >
+        <Image class="w-32" src={PixelGene} alt="PixelGene" />
+        <h2 class="text-2xl z-10">Gene Ni</h2>
+        <p class="z-10 text-sm">Full Stack Developer @</p>
+        <Image class="w-10" src={msu_icon} alt="MSU Icon" />
+        <p class="z-10 font-bold text-lg text-[#18453B]">
+          Michigan State University
+        </p>
+
+        <p class="z-10 font-bold text-lg text-[#7BBD00]">
+          Irrigation Laboratory
+        </p>
+      </div>
+    </div>
   </div>
 </Layout>
