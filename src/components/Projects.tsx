@@ -10,11 +10,11 @@ import {
 
 export default function Projects() {
   return (
-    <Carousel className="w-full h-full flex flex-col items-center justify-center border border-black rounded-xl">
+    <Carousel className="w-full h-full flex flex-col items-center justify-center">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="p-1">
+          <CarouselItem className="w-full" key={index}>
+            <div className="p-1 h-full border border-black rounded-xl">
                 <h2>{index}</h2>
             </div>
           </CarouselItem>

@@ -1,6 +1,8 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
+import { useStore } from "@nanostores/react";
+import { isNavOpen, setIsNavOpen } from "../lib/stores";
 
 interface NavProps {
   currentPath: string;
@@ -16,7 +18,7 @@ interface NavItem {
 
 export default function NavItems({ currentPath, size }: NavProps) {
   const [isMobile, setIsMobile] = useState(false);
-
+  const navOpen = useStore(isNavOpen)
   const navItems: NavItem[] = [
     {
       name: "Home",
@@ -72,6 +74,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const isExpanded = isMobile || currHover !== null;
+
   const handleMouseEnter = () => {
     if (isMobile) return;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -80,6 +83,8 @@ export default function NavItems({ currentPath, size }: NavProps) {
 
   const handleMouseLeave = () => {
     if (isMobile) return;
+    console.log("Closed!")
+    setIsNavOpen(false)
     timeoutRef.current = setTimeout(() => {
       setCurrHover(null);
     }, 300);
@@ -87,7 +92,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // Tailwind's `md` breakpoint
+      setIsMobile(window.innerWidth < 1080); // Tailwind's `md` breakpoint
     };
 
     checkMobile();
@@ -111,10 +116,14 @@ export default function NavItems({ currentPath, size }: NavProps) {
         transition={{ duration: 0.3 }}
         className="h-16 rounded-full bg-white border-2 text-black py-2 flex justify-center items-center overflow-hidden"
       >
-        {!isExpanded ? (
+        {!isExpanded || navOpen ? (
           <a
             href={currentItem.href}
             className="flex items-center justify-center min-w-[2rem] h-8"
+            onClick={() => {
+              console.log("Open!")
+              setIsNavOpen(true)
+            }}
             title={currentItem.name}
           >
             {currentItem.icon}

@@ -13,3 +13,9 @@ export function addPoppedLanguage(name: string) {
 }
 
 export const githubLanguages = atom<LanguageEntry[]>([]);
+
+export const isNavOpen = atom<boolean>(false);
+
+export function setIsNavOpen(bool: boolean) {
+    isNavOpen.set(bool);
+}
