@@ -3,6 +3,7 @@ import Layout from "./Layout.astro";
 import LanguageBubbles from "../components/LanguageBubbles";
 import { Image } from "astro:assets";
 import msu_icon from "../images/msu_helmet.svg";
+import PixelGene from "../images/PixelGene.png";
 ---
 
 <Layout title="Gene Ni | 25' UMCP">
@@ -13,13 +14,14 @@ import msu_icon from "../images/msu_helmet.svg";
     <LanguageBubbles client:load />
 
     <!-- Foreground content -->
-    <h2 class="text-5xl z-10">Gene Ni</h2>
-    <p class="z-10">Full Stack Developer @</p>
+    <Image class="w-32" src={PixelGene} alt="PixelGene" />
+    <h2 class="text-2xl z-10">Gene Ni</h2>
+    <p class="z-10 text-sm">Full Stack Developer @</p>
     <Image class="w-10" src={msu_icon} alt="MSU Icon" />
-    <p class="z-10 font-bold text-2xl text-[#18453B]">
+    <p class="z-10 font-bold text-lg text-[#18453B]">
       Michigan State University
     </p>
 
-    <p class="z-10 font-bold text-2xl text-[#7BBD00]">Irrigation Laboratory</p>
+    <p class="z-10 font-bold text-lg text-[#7BBD00]">Irrigation Laboratory</p>
   </div>
 </Layout>

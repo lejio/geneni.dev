@@ -90,13 +90,10 @@ export default function NavItems({ currentPath, size }: NavProps) {
     >
       <motion.div
         layout
-        initial={{ width: 64 }}
-        animate={{ width: isExpanded ? 256 : 64 }}
+        initial={{ width: 64, borderColor: currentItem.color }}
+        animate={{ width: isExpanded ? 256 : 64, borderColor: (currHover ?? currentItem).color }}
         transition={{ duration: 0.3 }}
         className="h-16 rounded-full bg-white border-2 text-black py-2 flex justify-center items-center overflow-hidden"
-        style={{
-          borderColor: (currHover ?? currentItem).color,
-        }}
       >
         {!isExpanded ? (
           <a
@@ -129,19 +126,22 @@ export default function NavItems({ currentPath, size }: NavProps) {
         )}
       </motion.div>
 
-      <AnimatePresence>
-        {isExpanded && currHover && (
-          <motion.p
-            key={currHover.name}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 5 }}
-            transition={{ duration: 0.2 }}
-          >
-            {currHover.name}
-          </motion.p>
-        )}
-      </AnimatePresence>
+      <div className="relative h-5">
+        <AnimatePresence mode="wait">
+          {isExpanded && currHover && (
+            <motion.p
+              key={currHover.name}
+              initial={{ opacity: 0, y: -10, position: "absolute" }}
+              animate={{ opacity: 1, y: 0, position: "absolute" }}
+              exit={{ opacity: 0, y: 10, position: "absolute" }}
+              transition={{ duration: 0.2 }}
+              className="text-sm text-center w-full"
+            >
+              {currHover.name}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
       {/* {currHover?.name} */}
     </div>
   );

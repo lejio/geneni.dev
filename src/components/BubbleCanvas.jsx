@@ -97,7 +97,7 @@ export default function BubbleCanvas({ languages }) {
       x: width / 2 - 150,
       y: height / 2 - 100,
       width: 300,
-      height: 120,
+      height: 300,
     };
 
     function repelFromTextZone(alpha) {
@@ -157,6 +157,17 @@ export default function BubbleCanvas({ languages }) {
         .attr("fill", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke-width", 1.5);
+
+      // Repel Box outline for debug
+      // container
+      //   .append("rect")
+      //   .attr("x", repelBox.x)
+      //   .attr("y", repelBox.y)
+      //   .attr("width", repelBox.width)
+      //   .attr("height", repelBox.height)
+      //   .attr("fill", "none")
+      //   .attr("stroke", "red")
+      //   .attr("stroke-dasharray", "5,5");
 
       // I can make the nodes use icons instead of text.
       container
