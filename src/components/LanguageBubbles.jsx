@@ -43,7 +43,7 @@ export default function LanguageBubbles() {
 
   if (languages.length === 0)
     return (
-      <div className="absolute top-0 left-0 p-5 w-48">
+      <div className="hidden md:block absolute top-0 left-0 p-5 w-48">
         <AnimatePresence mode="wait">
           <motion.p
             initial={{ opacity: 0, y: -10, position: "absolute" }}
