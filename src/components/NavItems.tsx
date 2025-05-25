@@ -1,7 +1,6 @@
-import React, { type JSX } from "react";
+import { type JSX } from "react";
 import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail } from "react-icons/io";
 import { useState } from "react";
-import type { IconType } from "react-icons";
 
 interface NavProps {
   currentPath: string;

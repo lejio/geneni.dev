@@ -23,7 +23,6 @@ const languageColors = {
 };
 
 export default function BubbleCanvas({ languages }) {
-  console.log(languages);
   const svgRef = useRef(null);
   const simulationRef = useRef(null);
   if (!languages || languages.length === 0) return null;
@@ -45,11 +44,6 @@ export default function BubbleCanvas({ languages }) {
       .scaleSqrt()
       .domain([0, d3.max(languages, (d) => d.value)])
       .range([minRadius, maxRadius]);
-
-    // const rScale = d3
-    //   .scaleSqrt()
-    //   .domain([0, d3.max(languages, (d) => d.value)])
-    //   .range([50, 150]);
 
     const allNodes = languages.map((d) => {
       const r = rScale(d.value);
@@ -164,6 +158,7 @@ export default function BubbleCanvas({ languages }) {
         .attr("stroke", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke-width", 1.5);
 
+      // I can make the nodes use icons instead of text.
       container
         .append("text")
         .data([node])
