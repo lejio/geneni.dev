@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useRef, useState } from "react";
-import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail } from "react-icons/io";
+import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail, IoMdBriefcase } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { isNavOpen, setIsNavOpen } from "../lib/stores";
@@ -18,7 +18,7 @@ interface NavItem {
 
 export default function NavItems({ currentPath, size }: NavProps) {
   const [isMobile, setIsMobile] = useState(false);
-  const navOpen = useStore(isNavOpen)
+  const navOpen = useStore(isNavOpen);
   const navItems: NavItem[] = [
     {
       name: "Home",
@@ -32,13 +32,24 @@ export default function NavItems({ currentPath, size }: NavProps) {
       ),
     },
     {
+      name: "Experience",
+      href: "/experience",
+      color: "#a872f4",
+      icon: (
+        <IoMdBriefcase
+          size={size}
+          className="transition-all duration-300 hover:text-[#a872f4]"
+        />
+      ),
+    },
+    {
       name: "Projects",
       href: "/projects",
-      color: "#a872f4",
+      color: "#876ef1",
       icon: (
         <IoMdRocket
           size={size}
-          className="rotate-45 transition-all duration-300 hover:text-[#a872f4]"
+          className="rotate-45 transition-all duration-300 hover:text-[#876ef1]"
         />
       ),
     },
@@ -83,8 +94,8 @@ export default function NavItems({ currentPath, size }: NavProps) {
 
   const handleMouseLeave = () => {
     if (isMobile) return;
-    console.log("Closed!")
-    setIsNavOpen(false)
+    console.log("Closed!");
+    setIsNavOpen(false);
     timeoutRef.current = setTimeout(() => {
       setCurrHover(null);
     }, 300);
@@ -102,7 +113,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
 
   return (
     <div
-      className="relative flex justify-center items-center gap-5"
+      className="relative flex justify-center items-center gap-2 md:gap-5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -121,8 +132,8 @@ export default function NavItems({ currentPath, size }: NavProps) {
             href={currentItem.href}
             className="flex items-center justify-center min-w-[2rem] h-8"
             onClick={() => {
-              console.log("Open!")
-              setIsNavOpen(true)
+              console.log("Open!");
+              setIsNavOpen(true);
             }}
             title={currentItem.name}
           >
