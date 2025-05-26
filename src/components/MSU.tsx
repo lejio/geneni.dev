@@ -8,9 +8,11 @@ import MSU_4 from "../images/MSU_4.jpg";
 import I_CPP from "../images/I_CPP";
 import I_Astro from "../images/I_Astro";
 import I_TS from "../images/I_TS";
+import I_C from "../images/I_C";
 
 export default function MSU() {
-  const techStack = [I_CPP, I_Astro, I_TS];
+  const techStack_1 = [I_CPP, I_C];
+  const techStack_2 = []
 
   return (
     <div className="w-full h-full flex flex-col justify-start align-middle items-center gap-5">
@@ -22,36 +24,29 @@ export default function MSU() {
         </div>
       </div>
 
-      <div className=" text-white flex flex-col gap-5 w-[500px] h-full">
-        <div className=" w-[600px] flex flex-row gap-5">
+      <div className=" text-white flex flex-col gap-5 h-full">
+        <div className=" w-[300px] md:w-[600px] flex flex-row gap-5">
           <img
-            className=" rounded-xl"
-            width={200}
-            src={MSU_4.src}
+            className="w-28 md:h-auto md:w-64 rounded-xl object-cover"
+            src={MSU_1.src}
             alt="Pic at MSU"
           />
           <div className="w-full flex flex-col gap-2">
-            <h2 className="text-xl">Full Stack Developer</h2>
+            <h2 className="text-sm md:text-xl">Full Stack Developer</h2>
             <div className="flex flex-row gap-2">
-              {techStack.map((Icon, idx) => {
+              {techStack_1.map((Icon, idx) => {
                 return (
-                  <div key={idx} className="w-10 h-10">
+                  <div key={idx} className="w-6 h-6 md:w-10 md:h-10">
                     <Icon />
                   </div>
                 );
               })}
             </div>
-            <p>
-                Deserunt occaecat in sint amet nostrud sit tempor consectetur quis. Consequat anim est adipisicing mollit. Officia irure ea incididunt nulla irure qui laboris minim irure. Veniam commodo nisi ea irure est cillum eiusmod.
+            <p className=" text-xs md:text-base text-wrap">
+                Programmed the LOCOMOS line of sensors that are being used across Michigan, and now Washington State. Improved battery life by 100% with ULP mode and local caching, allowing sensors to survive the winter during low sunlight seasons.
             </p>
           </div>
         </div>
-        <img
-          className="w-64 rounded-xl"
-          width={200}
-          src={MSU_1.src}
-          alt="LOCOMOS Sensor"
-        />
       </div>
     </div>
   );
