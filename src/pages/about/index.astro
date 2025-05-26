@@ -1,10 +1,73 @@
 ---
 import Layout from "../Layout.astro";
+import UMD from "../../images/UMD.svg";
+import I_MLogo from "../../images/I_MLogo.svg";
+import PixelMe from "../../images/PixelMe.png";
 ---
 
 <Layout transition:name="Gene Ni | About">
-    <div class="w-full h-full flex flex-col justify-center items-center align-middle">
-        <h1>About</h1>
-        <p>Under Construction!</p>
+  <div
+    class="relative w-full h-full flex flex-col gap-5 rounded-xl border border-solid border-[#e21833] items-center align-middle"
+  >
+    <div class="absolute inset-0 p-10">
+        <img
+      src={I_MLogo.src}
+      alt="Background Logo"
+      class="w-full h-full object-contain opacity-[0.05] z-0 pointer-events-none"
+    />
     </div>
+
+    <div
+      class="relative z-10 w-full h-full flex flex-col gap-5 items-center align-middle"
+    >
+      <div
+        class="flex flex-col gap-5 justify-center items-center align-middle rounded-full w-48 h-48"
+      >
+        <img
+          class="rounded-full border-1 border border-[#e21833]"
+          src={PixelMe.src}
+        />
+        <h2 class="text-xl">Hi I'm Gene 👋</h2>
+      </div>
+      <div class="flex flex-row justify-start p-5 gap-5">
+        <div class="flex flex-col justify-center items-center gap-2">
+          <h3>My Favorite Artist</h3>
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/artist/7p2S6p9yYGhJTtbTQFnsYZ?utm_source=generator"
+            width="100%"
+            height="352"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
+        </div>
+        <div class="flex flex-col justify-start items-center gap-2">
+          <h3>Education</h3>
+          <div class="w-40">
+            <img src={UMD.src} />
+          </div>
+          <p>
+            Major: <span class="underline decoration-[#e21833]"
+              >Computer and Information Science</span
+            >
+          </p>
+          <div class="text-sm flex flex-col text-center gap-2">
+            <h4 class="text-base underline decoration-[#e21833]">
+              Extracurriculars:
+            </h4>
+            <p>UMD Science Olympiad 2025: Co-President</p>
+            <p>UMD Science Olympiad 2024: Treasurer</p>
+            <p>AIAA DBF 2022: Structures Team Lead</p>
+            <p>Member of Chinese Student Association</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-col justify-start items-center gap-2 p-2 w-[300px]"
+        >
+          <h3>Hobbies</h3>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>

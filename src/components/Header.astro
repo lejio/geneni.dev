@@ -4,7 +4,7 @@ import LangPercentage from "./LangPercentage"
 const currentPath = Astro.url.pathname;
 ---
 
-<header class=" max-w-[1920px] max-h-[1080px] w-full pt-5 h-auto flex justify-between align-middle items-center">
+<header class=" max-w-[1920px] max-h-[1080px] w-full pt-2 h-auto flex justify-between align-middle items-center">
     <NavBar />
     <div class="hidden sm:flex w-full justify-end align-middle items-center">
         {currentPath == "/"? <LangPercentage client:load />: null}

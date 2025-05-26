@@ -1,5 +1,7 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail, IoMdBriefcase } from "react-icons/io";
+
+import { GoHome, GoRocket, GoPerson, GoMail, GoBriefcase } from "react-icons/go";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { isNavOpen, setIsNavOpen } from "../lib/stores";
@@ -125,7 +127,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
           borderColor: (currHover ?? currentItem).color,
         }}
         transition={{ duration: 0.3 }}
-        className="h-16 rounded-full bg-white border-2 text-black py-2 flex justify-center items-center overflow-hidden"
+        className="h-14 rounded-full bg-white text-black flex justify-center items-center overflow-hidden"
       >
         {!isExpanded || navOpen ? (
           <a
