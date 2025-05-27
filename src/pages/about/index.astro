@@ -7,31 +7,34 @@ import PixelMe from "../../images/PixelMe.png";
 
 <Layout transition:name="Gene Ni | About">
   <div
-    class="relative w-full h-full flex flex-col gap-5 rounded-xl border border-solid border-[#e21833] items-center align-middle"
+    class="relative max-w-[1920px] md:max-h-[1080px] w-full h-auto md:h-[85vh] flex flex-col gap-5 rounded-xl md:border md:border-solid md:border-[#e21833] items-center align-middle"
   >
     <div class="absolute inset-0 p-10">
-        <img
-      src={I_MLogo.src}
-      alt="Background Logo"
-      class="w-full h-full object-contain opacity-[0.05] z-0 pointer-events-none"
-    />
+      <img
+        src={I_MLogo.src}
+        alt="Background Logo"
+        class="w-full h-full object-contain opacity-[0.05] z-0 pointer-events-none"
+      />
     </div>
 
     <div
-      class="relative z-10 w-full h-full flex flex-col gap-5 items-center align-middle"
+      class="relative z-10 w-full h-full flex flex-col justify-evenly items-center align-middle"
     >
       <div
-        class="flex flex-col gap-5 justify-center items-center align-middle rounded-full w-48 h-48"
+        class="flex flex-col gap-2 py-5 md:py-0 justify-start md:justify-center items-center align-middle"
       >
-        <img
-          class="rounded-full border-1 border border-[#e21833]"
-          src={PixelMe.src}
-        />
-        <h2 class="text-xl">Hi I'm Gene 👋</h2>
+        <div class="rounded-full w-32 h-32 md:w-48 md:h-48">
+          <img
+            class="rounded-full border-1 border border-[#e21833]"
+            src={PixelMe.src}
+          />
+        </div>
+        <h2 class="text-xl">Hi I'm Lejio 👋</h2>
+        <p class="text-slate-500 text-xs">IRL, people call me Gene</p>
       </div>
-      <div class="flex flex-row justify-start p-5 gap-5">
+      <div class="flex flex-col md:flex-row w-full justify-evenly items-center align-middle p-5 gap-10 md:gap-5">
         <div class="flex flex-col justify-center items-center gap-2">
-          <h3>My Favorite Artist</h3>
+          <h3 class="text-base md:text-xl">My Favorite Artist</h3>
           <iframe
             style="border-radius:12px"
             src="https://open.spotify.com/embed/artist/7p2S6p9yYGhJTtbTQFnsYZ?utm_source=generator"
@@ -42,30 +45,51 @@ import PixelMe from "../../images/PixelMe.png";
             loading="lazy"></iframe>
         </div>
         <div class="flex flex-col justify-start items-center gap-2">
-          <h3>Education</h3>
+          <h3 class="text-base md:text-xl">Education</h3>
           <div class="w-40">
             <img src={UMD.src} />
           </div>
-          <p>
+          <h4 class=" text-xs md:text-base">
             Major: <span class="underline decoration-[#e21833]"
               >Computer and Information Science</span
             >
-          </p>
-          <div class="text-sm flex flex-col text-center gap-2">
-            <h4 class="text-base underline decoration-[#e21833]">
-              Extracurriculars:
-            </h4>
-            <p>UMD Science Olympiad 2025: Co-President</p>
-            <p>UMD Science Olympiad 2024: Treasurer</p>
-            <p>AIAA DBF 2022: Structures Team Lead</p>
-            <p>Member of Chinese Student Association</p>
+          </h4>
+          <div class="text-sm flex flex-col text-center gap-2 my-5">
+            <h4 class="text-sm md:text-base">Extracurriculars:</h4>
+            <p class=" text-xs md:text-base">
+              UMD Science Olympiad 2025: <span
+                class="underline decoration-[#e21833]">Co-President</span>
+            </p>
+            <p class=" text-xs md:text-base">
+              UMD Science Olympiad 2024: <span
+                class="underline decoration-[#e21833]">Treasurer</span>
+            </p>
+            <p class=" text-xs md:text-base">
+              AIAA DBF 2022: <span class="underline decoration-[#e21833]"
+                >Structures Team Lead</span>
+            </p>
+            <p class=" text-xs md:text-base">Member of Chinese Student Association</p>
           </div>
         </div>
         <div
           class="flex flex-col justify-start items-center gap-2 p-2 w-[300px]"
         >
-          <h3>Hobbies</h3>
-
+          <h3 class="text-base md:text-xl">Hobbies</h3>
+          <div
+            class="w-full h-full flex flex-col p-5 align-middle items-center rounded-xl border border-1 border-[#e21833]"
+          >
+            <ul class="flex flex-col gap-2 text-xs md:text-base">
+              <li>Coding dumb projects</li>
+              <li>Building servers</li>
+              <li>Playing with terraform</li>
+              <li>Osu! enjoyer</li>
+              <li>League ARAM otp</li>
+              <li>Figurine collector</li>
+              <li>YuGiOh duelist</li>
+              <li>Retired fps gamer</li>
+              <li>Listening to indie Jpop</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

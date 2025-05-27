@@ -16,13 +16,12 @@ const { title } = Astro.props;
   </head>
   <body>
     <main
-      class="font-zerox w-full h-[100vh] flex flex-col px-3 md:px-5 gap-4 justify-between align-middle items-center"
+      class="font-zerox w-full h-auto min-h-screen flex flex-col px-3 md:px-5 gap-4 justify-between align-middle items-center"
     >
       <Header />
       <div
         transition:animate="fade"
-        class="w-full h-[100vh] flex flex-col gap-4 justify-start align-middle items-center"
-      >
+        class="w-full flex flex-col gap-4 justify-start items-center">
         <slot />
       </div>
       <Footer />

@@ -11,10 +11,10 @@ import {
 import JHUAPL from "./JHUAPL";
 import MSU from "./MSU";
 
-export default function Projects() {
+export default function Experience() {
   // #052f73
   return (
-    <Carousel className="max-w-[1920px] max-h-[1080px] w-full h-full flex flex-col items-center justify-center">
+    <Carousel className="max-w-[1920px] max-h-[1080px] w-full h-[85vh] flex flex-col items-center justify-center">
       <CarouselContent>
         <CarouselItem className="w-full">
           <div className="p-5 h-full bg-gradient-to-bl from-green-400 to-[#18453B] rounded-xl">

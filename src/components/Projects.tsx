@@ -10,7 +10,7 @@ import {
 
 export default function Projects() {
   return (
-    <Carousel className="w-full h-full flex flex-col items-center justify-center">
+    <Carousel className="w-full h-[85vh] flex flex-col items-center justify-center">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem className="w-full" key={index}>
