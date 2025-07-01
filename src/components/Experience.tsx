@@ -70,7 +70,7 @@ export default function Experience() {
             alt="MSU Seal"
             className="stagger w-16 h-16 md:w-32 md:h-32"
           />
-          <h1 className="stagger text-base md:text-xl text-[#18453B] font-bold">
+          <h1 className="stagger text-base text-center md:text-xl text-[#18453B] font-bold">
             Michigan State University
           </h1>
           <p className="stagger text-sm md:text-base text-[#18453B]">
@@ -78,24 +78,24 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="flex w-full h-full pt-5 flex-row gap-10">
+        <div className="flex w-full h-full pt-5 flex-col md:flex-row gap-20 md:gap-10">
           <div className="flex flex-col w-full h-full justify-start items-center align-middle gap-5">
             <div className="flex flex-row justify-center gap-5 w-full">
               <img
                 src="/MSU_1.jpg"
                 alt="LOCOMOS Sensor"
-                className="stagger h-52 rounded"
+                className="stagger h-60 md:h-52 rounded"
               />
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2 md:gap-4">
                 <h2 className="stagger text-md md:text-lg text-[#18453B] font-bold">
-                  Low-Cost Monitoring System (LOCOMOS)
+                  Low-Cost Monitoring System
                 </h2>
                 <hr className="stagger" />
                 <div className="flex flex-row justify-start gap-4">
-                  <div className="stagger h-12 w-12">
+                  <div className="stagger h-8 w-8 md:h-12 md:w-12">
                     <I_C />
                   </div>
-                  <div className="stagger h-12 w-12">
+                  <div className="stagger h-8 w-8 md:h-12 md:w-12">
                     <I_CPP />
                   </div>
                 </div>
@@ -134,22 +134,22 @@ export default function Experience() {
                 <img
                   src="/scheduler_1.png"
                   alt="MSU Irrigation Scheduler"
-                  className="stagger-2 h-56 rounded"
-                  style={{ height: "224px" }}
+                  className="stagger-2 h-60 rounded"
+                  style={{ height: "264px" }}
                 />
                 <div className="flex flex-col gap-4">
                   <h2 className="stagger-2 text-md md:text-lg text-[#18453B] font-bold">
                     MSU Irrigation Scheduler
                   </h2>
                   <hr className="stagger-2" />
-                  <div className="flex flex-row justify-start gap-4">
-                    <div className="stagger-2 h-12 w-12">
+                  <div className="flex flex-row justify-start gap-2 md:gap-4">
+                    <div className="stagger-2 h-8 w-8 md:h-12 md:w-12">
                       <I_Dart />
                     </div>
-                    <div className="stagger-2 h-12 w-12">
+                    <div className="stagger-2 h-8 w-8 md:h-12 md:w-12">
                       <I_Flutter />
                     </div>
-                    <div className="stagger-2 h-12 w-12">
+                    <div className="stagger-2 h-8 w-8 md:h-12 md:w-12">
                       <I_Firebase />
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export default function Experience() {
                   src="/scheduler_2.png"
                   alt="MSU Irrigation Scheduler"
                   className="stagger-2 h-56 rounded"
-                  style={{ height: "224px" }}
+                  style={{ height: "264px" }}
                 />
               </div>
             </div>
@@ -203,21 +203,21 @@ export default function Experience() {
                   src="/sure_1.png"
                   alt="MSU:SURE Home Page"
                   className="stagger-3 h-56 rounded"
-                  style={{ height: "224px" }}
+                  style={{ height: "264px" }}
                 />
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 md:gap-4">
                   <h2 className="stagger-3 text-md md:text-lg text-[#18453B] font-bold">
                     MSU:SURE
                   </h2>
                   <hr className="stagger-3" />
                   <div className="flex flex-row justify-start gap-4">
-                    <div className="stagger-3 h-12 w-12">
+                    <div className="stagger-3 h-8 w-8 md:h-12 md:w-12">
                       <I_TS />
                     </div>
-                    <div className="stagger-3 h-12 w-12">
+                    <div className="stagger-3 h-8 w-8 md:h-12 md:w-12">
                       <I_React />
                     </div>
-                    <div className="stagger-3 h-12 w-12">
+                    <div className="stagger-3 h-8 w-8 md:h-12 md:w-12">
                       <I_Firebase />
                     </div>
                   </div>
@@ -254,7 +254,7 @@ export default function Experience() {
                   src="/sure_2.png"
                   alt="MSU:SURE"
                   className="stagger-3 h-56 rounded"
-                  style={{ height: "224px" }}
+                  style={{ height: "264px" }}
                 />
               </div>
             </div>
@@ -264,23 +264,3 @@ export default function Experience() {
     </div>
   );
 }
-
-// export default function Experience() {
-//   // #052f73
-//   return (
-//     <Carousel className="max-w-[1920px] max-h-[1080px] w-full h-[85vh] flex flex-col items-center justify-center">
-//       <CarouselContent>
-//         <CarouselItem className="w-full">
-//           {/* <div className="p-5 h-full bg-gradient-to-bl from-green-400 to-[#18453B] rounded-xl"> */}
-//           <MSU />
-//           {/* </div> */}
-//         </CarouselItem>
-//         <CarouselItem className="w-full">
-//           <div className="p-5 h-full bg-gradient-to-bl from-[#052f73] to-blue-400 rounded-xl">
-//             <JHUAPL />
-//           </div>
-//         </CarouselItem>
-//       </CarouselContent>
-//     </Carousel>
-//   );
-// }
