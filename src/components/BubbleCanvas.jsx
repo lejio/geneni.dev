@@ -67,10 +67,10 @@ export default function BubbleCanvas({ languages }) {
     const svg = d3.select(svgEl).attr("width", width).attr("height", height);
     const container = svg.append("g");
 
-    const circles = container
-      .selectAll("circle")
-      .data(activeNodes, (d) => d.name);
-    const labels = container.selectAll("text").data(activeNodes, (d) => d.name);
+    // const circles = container
+    //   .selectAll("circle")
+    //   .data(activeNodes, (d) => d.name);
+    // const labels = container.selectAll("text").data(activeNodes, (d) => d.name);
 
     const simulation = d3
       .forceSimulation(activeNodes)
@@ -163,7 +163,7 @@ export default function BubbleCanvas({ languages }) {
         .attr("stroke", languageColors[node.name] || "rgba(100, 200, 255, 0.7)")
         .attr("stroke-width", 1.5)
         .style("cursor", "pointer")
-        .on("click", function (event, d) {
+        .on("click", function (_, d) {
           addPoppedLanguage(d.name);
 
           d3.select(this)

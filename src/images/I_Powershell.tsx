@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function I_Powershell() {
   return (
     <svg viewBox="0 0 128 128">

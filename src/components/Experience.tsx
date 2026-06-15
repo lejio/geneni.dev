@@ -6,7 +6,7 @@ import { animate, stagger } from "framer-motion";
 
 import I_C from "../images/I_C";
 import I_CPP from "../images/I_CPP";
-import JHUAPL from "./JHUAPL";
+// import JHUAPL from "./JHUAPL";
 import I_Dart from "../images/I_Dart";
 import I_Flutter from "../images/I_Flutter";
 import I_Firebase from "../images/I_Firebase";
@@ -61,10 +61,10 @@ export default function Experience() {
           alt="MSU Seal"
           className="stagger w-16 h-16 md:w-32 md:h-32"
         />
-        <h1 className="stagger text-base text-center md:text-2xl text-[#18453B] font-bold">
+        <h1 className="stagger text-base text-center md:text-2xl text-msu-green dark:text-msu-green-light font-bold">
           Michigan State University
         </h1>
-        <p className="stagger text-sm md:text-xl text-[#18453B]">
+        <p className="stagger text-sm md:text-xl text-msu-green dark:text-msu-green-light">
           Irrigation Laboratory
         </p>
       </div>
@@ -78,7 +78,7 @@ export default function Experience() {
             className="stagger h-60 md:h-52 rounded"
           />
           <div className="flex flex-col gap-2 md:gap-4">
-            <h2 className="stagger text-md md:text-xl text-[#18453B] font-bold">
+            <h2 className="stagger text-md md:text-xl text-msu-green dark:text-msu-green-light font-bold">
               Low-Cost Monitoring System (LOCOMOS)
             </h2>
             <hr className="stagger" />
@@ -90,17 +90,17 @@ export default function Experience() {
                 <I_CPP />
               </div>
             </div>
-            <p className="stagger text-xs md:text-base text-[#18453B] text-wrap">
+            <p className="stagger text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
               Programmed the LOCOMOS line of sensors that are being used across
               Michigan and Washington State
             </p>
           </div>
         </div>
-        <p className="stagger text-xs md:text-base text-[#18453B] text-wrap">
+        <p className="stagger text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
           Improved battery life by 100% with ULP mode and local caching,
           allowing sensors to survive the winter during low sunlight seasons
         </p>
-        <ul className="text-xs md:text-base text-[#18453B] list-disc pl-5">
+        <ul className="text-xs md:text-base text-msu-green dark:text-msu-green-light list-disc pl-5">
           <li className="stagger">
             <p>
               Reduced the number of publish requests from all particle devices
@@ -122,7 +122,7 @@ export default function Experience() {
         <div className="flex flex-col w-full h-full justify-start items-center align-middle gap-5">
           <div className="flex flex-row justify-center gap-5 w-full">
             <div className="flex flex-col gap-4">
-              <h2 className="stagger-2 text-md md:text-xl text-[#18453B] font-bold">
+              <h2 className="stagger-2 text-md md:text-xl text-msu-green dark:text-msu-green-light font-bold">
                 MSU Irrigation Scheduler
               </h2>
               <hr className="stagger-2" />
@@ -137,7 +137,7 @@ export default function Experience() {
                   <I_Firebase />
                 </div>
               </div>
-              <p className="stagger-2 text-xs md:text-base text-[#18453B] text-wrap">
+              <p className="stagger-2 text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
                 Maintained and updated the MSU Irrigation Scheduler, a Flutter
                 application that gave farmers the ability to schedule irrigation
                 based on weather forecasts and soil moisture levels
@@ -160,11 +160,11 @@ export default function Experience() {
           </div>
           <div className="flex flex-row justify-start gap-3 w-full">
             <div className="flex flex-col gap-4">
-              <p className="stagger-2 text-xs md:text-base text-[#18453B] text-wrap">
+              <p className="stagger-2 text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
                 This significantly improved the user experience and
                 responsiveness of the application
               </p>
-              <ul className="text-xs md:text-base text-[#18453B] text-wrap list-disc pl-5">
+              <ul className="text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap list-disc pl-5">
                 <li className="stagger-2">
                   <p>
                     Reduced load times by 33% by optimizing data retrieval
@@ -195,7 +195,7 @@ export default function Experience() {
               style={{ height: "264px" }}
             />
             <div className="flex flex-col gap-2 md:gap-4">
-              <h2 className="stagger-3 text-md md:text-xl text-[#18453B] font-bold">
+              <h2 className="stagger-3 text-md md:text-xl text-msu-green dark:text-msu-green-light font-bold">
                 MSU:SURE
               </h2>
               <hr className="stagger-3" />
@@ -210,7 +210,7 @@ export default function Experience() {
                   <I_Firebase />
                 </div>
               </div>
-              <p className="stagger-3 text-xs md:text-base text-[#18453B] text-wrap">
+              <p className="stagger-3 text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
                 Designed and developed the MSU: System Uniformity & Rate
                 Evaluation (SURE) app
               </p>
@@ -218,12 +218,12 @@ export default function Experience() {
           </div>
           <div className="flex flex-row justify-start gap-3 w-full">
             <div className="flex flex-col gap-4">
-              <p className="stagger-3 text-xs md:text-base text-[#18453B] text-wrap">
+              <p className="stagger-3 text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap">
                 Significantly improves the process of evaluating irrigation
                 systems by allowing users to input data and generate reports
                 within minutes
               </p>
-              <ul className="text-xs md:text-base text-[#18453B] text-wrap list-disc pl-5">
+              <ul className="text-xs md:text-base text-msu-green dark:text-msu-green-light text-wrap list-disc pl-5">
                 <li className="stagger-3">
                   <p>4 different user groups with different permissions</p>
                 </li>

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import L_JHUAPL from "../images/L_jhuapl.png"
 
 export default function JHUAPL() {

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function I_React() {
   return (
     <svg viewBox="0 0 128 128">

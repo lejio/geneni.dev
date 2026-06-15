@@ -125,13 +125,13 @@ export default function NavItems({ currentPath, size }: NavProps) {
     >
       <motion.div
         layout
-        initial={{ width: 64, borderColor: currentItem.color }}
+        initial={{ width: 64 }}
         animate={{
           width: isExpanded ? 256 : 64,
-          borderColor: (currHover ?? currentItem).color,
+          // borderColor: (currHover ?? currentItem).color,
         }}
         transition={{ duration: 0.3 }}
-        className="h-14 rounded-full bg-white text-black flex justify-center items-center overflow-hidden"
+        className="h-14 rounded-full flex justify-center items-center overflow-hidden border border-transparent"
       >
         {!isExpanded || navOpen ? (
           <a
@@ -177,7 +177,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
               animate={{ opacity: 1, y: 0, position: "absolute" }}
               exit={{ opacity: 0, y: 10, position: "absolute" }}
               transition={{ duration: 0.2 }}
-              className="text-sm text-center w-full"
+              className="text-sm text-center w-full text-neutral-700 dark:text-neutral-200"
             >
               {currHover.name}
             </motion.p>

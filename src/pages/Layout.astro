@@ -12,13 +12,39 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      (function () {
+        function getTheme() {
+          const stored = localStorage.getItem("site-theme");
+          if (stored === "light" || stored === "dark") return stored;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        function applyTheme(doc) {
+          const root = doc.documentElement;
+          root.classList.toggle("dark", getTheme() === "dark");
+        }
+
+        applyTheme(document);
+
+        document.addEventListener("astro:before-swap", (event) => {
+          applyTheme(event.newDocument);
+        });
+
+        document.addEventListener("astro:after-swap", () => {
+          applyTheme(document);
+        });
+      })();
+    </script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body>
+  <body class="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
     <main
-      class="font-zerox w-full h-auto min-h-screen flex flex-col px-3 md:px-5 gap-4 justify-between align-middle items-center"
+      class="font-zerox w-full h-auto min-h-screen flex flex-col px-3 md:px-5 gap-4 justify-between align-middle items-center bg-white dark:bg-neutral-950"
     >
       <Header />
       <div
@@ -56,6 +82,16 @@ const { title } = Astro.props;
 </style>
 
 <style is:global>
+  html {
+    background-color: #ffffff;
+    color-scheme: light;
+  }
+
+  html.dark {
+    background-color: #0a0a0a;
+    color-scheme: dark;
+  }
+
   .ascii-gears,
   .ascii-gears * {
     font-family: "Courier New", Courier, monospace !important;

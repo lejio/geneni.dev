@@ -1,16 +1,18 @@
 ---
 import Layout from "./Layout.astro";
-import { Image } from "astro:assets";
-import PixelGene from "../images/PixelGene.png";
 import AsciiGears from "../components/AsciiGears.tsx";
 ---
 
 <Layout title="Gene Ni | 25' UMCP">
-  <div class="max-w-[1920px] max-h-[1080px] w-full h-[85vh] flex flex-row">
-    <div
+  <div class="flex flex-col items-center gap-4 w-full max-w-2xl mx-auto py-8">
+    <AsciiGears client:load className="w-full aspect-[3/2]" />
+    <h1 class="text-center">Welcome! My name is Gene.</h1>
+    <p class="text-center text-xs">I'm a full stack developer and I love building things on the internet!</p>
+  </div>
+    <!-- <div
       class="relative max-w-[1920px] max-h-[1080px] w-full h-full flex flex-col items-center justify-center text-white bg-gradient-to-r from-fuchsia-400 to-blue-600 rounded-xl overflow-hidden"
     >
-      <AsciiGears client:load />
+      
       <div
         class="relative z-10 w-full h-full flex flex-col items-center justify-center gap-3"
       >
@@ -26,6 +28,5 @@ import AsciiGears from "../components/AsciiGears.tsx";
           Irrigation Laboratory
         </p>
       </div>
-    </div>
-  </div>
+    </div> -->
 </Layout>

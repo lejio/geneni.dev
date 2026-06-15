@@ -1,11 +1,10 @@
-import * as React from "react"
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "../components/ui/Carousel"
 
 export default function Projects() {
