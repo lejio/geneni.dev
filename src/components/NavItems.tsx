@@ -1,7 +1,6 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { IoMdHome, IoMdRocket, IoMdPerson, IoMdMail, IoMdBriefcase } from "react-icons/io";
 
-import { GoHome, GoRocket, GoPerson, GoMail, GoBriefcase } from "react-icons/go";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { isNavOpen, setIsNavOpen } from "../lib/stores";
@@ -84,7 +83,7 @@ export default function NavItems({ currentPath, size }: NavProps) {
   );
 
   const [currHover, setCurrHover] = useState<NavItem | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isExpanded = isMobile || currHover !== null;
 

@@ -1,24 +1,15 @@
 ---
 import Layout from "./Layout.astro";
-import LanguageBubbles from "../components/LanguageBubbles";
 import { Image } from "astro:assets";
 import PixelGene from "../images/PixelGene.png";
-import LangPercentage from "../components/LangPercentage";
 ---
 
 <Layout title="Gene Ni | 25' UMCP">
   <div class="max-w-[1920px] max-h-[1080px] w-full h-[85vh] flex flex-row">
 
-    <div class="md:hidden">
-      <LangPercentage client:load />
-    </div>
     <div
       class="relative max-w-[1920px] max-h-[1080px] w-full h-full flex flex-col items-center justify-center text-white bg-gradient-to-r from-fuchsia-400 to-blue-600 rounded-xl"
     >
-      <!-- Background bubbles -->
-      <LanguageBubbles client:load />
-
-      <!-- Foreground content -->
       <div
         class="w-full h-full flex flex-col items-center justify-center gap-3"
       >
