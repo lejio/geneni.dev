@@ -100,8 +100,13 @@ export default function NavItems({ currentPath, size }: NavProps) {
     setIsNavOpen(false);
     timeoutRef.current = setTimeout(() => {
       setCurrHover(null);
-    }, 300);
+    }, 400);
   };
+
+  useEffect(() => {
+    const item = navItems.find((item) => item.href === currentPath) ?? navItems[0];
+    setCurrentItem(item);
+  }, [currentPath]);
 
   useEffect(() => {
     const checkMobile = () => {
