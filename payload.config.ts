@@ -14,11 +14,28 @@ import { SiteSettings } from "./globals/SiteSettings";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const connectionString =
+/** Neon/Vercel strings often use sslmode=require; pin verify-full to keep current pg behavior and silence the deprecation warning. */
+function postgresConnectionString(raw: string): string {
+  if (!raw) return raw;
+
+  try {
+    const url = new URL(raw);
+    const mode = url.searchParams.get("sslmode");
+    if (!mode || mode === "require" || mode === "prefer" || mode === "verify-ca") {
+      url.searchParams.set("sslmode", "verify-full");
+    }
+    return url.toString();
+  } catch {
+    return raw;
+  }
+}
+
+const connectionString = postgresConnectionString(
   process.env.DATABASE_URI ||
-  process.env.DATABASE_URL ||
-  process.env.POSTGRES_URL ||
-  "";
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    "",
+);
 
 export default buildConfig({
   admin: {

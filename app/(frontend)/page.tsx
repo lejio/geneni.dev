@@ -1,6 +1,9 @@
-import Link from "next/link";
+import { HomeNav } from "@/components/HomeNav";
+import { getNavItems } from "@/lib/nav-items";
 
-export default function Home() {
+export default async function Home() {
+  const navItems = await getNavItems();
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center">
       <main className="flex flex-1 w-full max-w-3xl flex-col justify-center gap-6 px-8 py-24">
@@ -8,14 +11,9 @@ export default function Home() {
         <p className="text-lg text-foreground/70 max-w-xl">
           Programming, photography, and trading.
         </p>
-        <p>
-          <Link
-            href="/blog"
-            className="underline underline-offset-4 hover:text-foreground/80"
-          >
-            Read the blog
-          </Link>
-        </p>
+        <div>
+          <HomeNav items={navItems} />
+        </div>
       </main>
     </div>
   );
