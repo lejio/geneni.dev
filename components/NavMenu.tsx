@@ -40,12 +40,16 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
   const [selectedIndex, setSelectedIndex] = useState(() =>
     defaultNavIndex(items),
   );
+  const [rendered, setRendered] = useState(open);
+  const [closing, setClosing] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const wheelDeltaRef = useRef(0);
 
   const selected = items[selectedIndex] ?? items[0];
+  const isActive = open || closing;
 
   const moveSelection = useEffectEvent((delta: number) => {
     setSelectedIndex((current) =>
@@ -65,7 +69,32 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
   }, [items]);
 
   useEffect(() => {
-    if (!open) return;
+    if (open) {
+      setReduceMotion(
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      );
+      setRendered(true);
+      setClosing(false);
+      return;
+    }
+
+    if (!rendered) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setRendered(false);
+      setClosing(false);
+      return;
+    }
+
+    setClosing(true);
+  }, [open, rendered]);
+
+  useEffect(() => {
+    if (!isActive) return;
 
     previousFocusRef.current =
       document.activeElement instanceof HTMLElement
@@ -74,16 +103,20 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    closeButtonRef.current?.focus();
 
     return () => {
       document.body.style.overflow = previousOverflow;
       previousFocusRef.current?.focus();
     };
-  }, [open]);
+  }, [isActive]);
 
   useEffect(() => {
     if (!open) return;
+    closeButtonRef.current?.focus();
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || closing) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -117,13 +150,26 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("wheel", onWheel);
     };
-  }, [open, onClose]);
+  }, [open, closing, onClose]);
 
-  if (!open || !selected || items.length === 0) return null;
+  if (!rendered || !selected || items.length === 0) return null;
 
   const listOffset = -selectedIndex * ITEM_STEP;
   const maxFontSize = `${ITEM_FONT_BASE + ITEM_FONT_GROWTH}rem`;
   const selectedBadge = badgeLabel(selected);
+  const playIntro = !closing && !reduceMotion;
+  const overlayAnimation = closing
+    ? "animate-[nav-fade-out_200ms_ease-in_forwards]"
+    : "animate-[nav-fade-in_220ms_ease-out]";
+  const dividerAnimation = playIntro
+    ? "origin-top scale-y-0 animate-[nav-divider-grow_400ms_ease-out_forwards]"
+    : "origin-top scale-y-100";
+  const leftAnimation = playIntro
+    ? "opacity-0 animate-[nav-panel-fade-in_280ms_ease-out_350ms_forwards]"
+    : "";
+  const rightAnimation = playIntro
+    ? "opacity-0 animate-[nav-panel-fade-in_280ms_ease-out_550ms_forwards]"
+    : "";
 
   return (
     <div
@@ -131,7 +177,13 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Site navigation"
-      className="fixed inset-0 z-50 flex animate-[nav-fade-in_220ms_ease-out] bg-background text-foreground"
+      className={`fixed inset-0 z-50 flex bg-background text-foreground ${overlayAnimation}${closing ? " pointer-events-none" : ""}`}
+      onAnimationEnd={(event) => {
+        if (event.target !== overlayRef.current) return;
+        if (!closing) return;
+        setRendered(false);
+        setClosing(false);
+      }}
     >
       <button
         ref={closeButtonRef}
@@ -142,7 +194,11 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
         Close
       </button>
 
-      <div className="relative h-full shrink-0 overflow-hidden border-r border-foreground/10">
+      <div className="relative h-full shrink-0 overflow-hidden">
+        <span
+          aria-hidden
+          className={`absolute top-0 right-0 z-10 h-full w-px bg-foreground/10 ${dividerAnimation}`}
+        />
         <div
           aria-hidden
           className="invisible flex w-max flex-col font-heading tracking-tight"
@@ -158,7 +214,9 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
           ))}
         </div>
 
-        <div className="absolute inset-0 overflow-hidden">
+        <div
+          className={`absolute inset-0 overflow-hidden ${leftAnimation}`}
+        >
           <div
             className="absolute inset-x-0 top-1/2 flex flex-col items-start will-change-transform transition-transform duration-300 ease-out"
             style={{
@@ -203,7 +261,9 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
         </div>
       </div>
 
-      <div className="relative flex h-full min-w-0 flex-1 flex-col justify-center px-12 py-24 md:px-20">
+      <div
+        className={`relative flex h-full min-w-0 flex-1 flex-col justify-center px-12 py-24 md:px-20 ${rightAnimation}`}
+      >
         <div
           key={selected.id}
           className="max-w-xl animate-[nav-detail-in_280ms_ease-out]"
