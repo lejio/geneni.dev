@@ -162,13 +162,13 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
     ? "animate-[nav-fade-out_200ms_ease-in_forwards]"
     : "animate-[nav-fade-in_220ms_ease-out]";
   const dividerAnimation = playIntro
-    ? "origin-top scale-y-0 animate-[nav-divider-grow_400ms_ease-out_forwards]"
-    : "origin-top scale-y-100";
+    ? "origin-top animate-[nav-divider-grow_400ms_ease-out_both]"
+    : "origin-top";
   const leftAnimation = playIntro
-    ? "opacity-0 animate-[nav-panel-fade-in_280ms_ease-out_350ms_forwards]"
+    ? "animate-[nav-panel-fade-in_280ms_ease-out_350ms_both]"
     : "";
   const rightAnimation = playIntro
-    ? "opacity-0 animate-[nav-panel-fade-in_280ms_ease-out_550ms_forwards]"
+    ? "animate-[nav-panel-fade-in_280ms_ease-out_550ms_both]"
     : "";
 
   return (
@@ -195,10 +195,6 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
       </button>
 
       <div className="relative h-full shrink-0 overflow-hidden">
-        <span
-          aria-hidden
-          className={`absolute top-0 right-0 z-10 h-full w-px bg-foreground/10 ${dividerAnimation}`}
-        />
         <div
           aria-hidden
           className="invisible flex w-max flex-col font-heading tracking-tight"
@@ -260,6 +256,11 @@ export function NavMenu({ open, onClose, items }: NavMenuProps) {
           </div>
         </div>
       </div>
+
+      <span
+        aria-hidden
+        className={`relative z-10 h-full w-px shrink-0 bg-foreground/10 ${dividerAnimation}`}
+      />
 
       <div
         className={`relative flex h-full min-w-0 flex-1 flex-col justify-center px-12 py-24 md:px-20 ${rightAnimation}`}

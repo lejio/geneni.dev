@@ -18,7 +18,7 @@ export function HomeNav({ items }: HomeNavProps) {
         onClick={() => setMenuOpen(true)}
         className="underline underline-offset-4 hover:text-foreground/80"
       >
-        Read the blog
+        Enter my virtual home
       </button>
       <NavMenu
         open={menuOpen}

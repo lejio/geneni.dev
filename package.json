@@ -16,6 +16,7 @@
     "@payloadcms/richtext-lexical": "^3.89.0",
     "@payloadcms/ui": "^3.89.0",
     "@phosphor-icons/react": "^2.1.10",
+    "animejs": "^4.5.0",
     "graphql": "^16.14.2",
     "next": "16.3.4",
     "payload": "^3.89.0",
